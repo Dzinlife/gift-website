@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <% if (process.env.NODE_ENV === 'development') { %>
+      <script src="http://localhost:8098"></script>
+    <% } %>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
@@ -8,10 +11,18 @@
     <title>gift-website</title>
   </head>
   <body>
-    <noscript>
-      <strong>We're sorry but gift-website doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
+    <script>
+      if (/^\/preview$/.test(location.pathname)) {
+        window.prismic = {
+          endpoint: 'https://gift.cdn.prismic.io/api/v2'
+        }
+        document.write('<script type="text/javascript" src="//static.cdn.prismic.io/prismic.min.js"><\/script>')
+      }
+    </script>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+    <% for(var file of htmlWebpackPlugin.files.js) { %>
+    <script type="text/javascript" src="<%= file %>" crossorigin></script>
+    <% } %>
+    <% htmlWebpackPlugin.files.js = [] %>
   </body>
 </html>
