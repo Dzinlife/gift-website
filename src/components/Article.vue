@@ -12,11 +12,21 @@ import { State } from 'vuex-class'
 import { getById } from '@/api/req'
 import Content from '@/components/Content.vue'
 import Section from '@/components/Section.vue'
+import ArticleList from '@/components/ArticleList.vue'
+import Image from '@/components/Image.vue'
+import List from '@/components/List.vue'
+import CompactList from '@/components/CompactList.vue'
+import Subtitle from '@/components/Subtitle.vue'
 
 @Component({
   components: {
     CContent: Content,
-    CSection: Section
+    CSection: Section,
+    ArticleList,
+    CImage: Image,
+    List,
+    CompactList,
+    Subtitle
   }
 })
 export default class Article extends Vue {
@@ -36,6 +46,16 @@ export default class Article extends Vue {
         return 'c-section'
       case 'content':
         return 'c-content'
+      case 'articlelist':
+        return 'article-list'
+      case 'image':
+        return 'c-image'
+      case 'compact-list':
+        return 'compact-list'
+      case 'list':
+        return 'list'
+      case 'subtitle':
+        return 'subtitle'
       default:
         return null
     }

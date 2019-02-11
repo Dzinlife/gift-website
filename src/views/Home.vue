@@ -4,7 +4,9 @@
     <hr>
     <c-article :id="home.data.services.id"/>
     <hr>
-    <partnership/>
+    <c-article :id="home.data.our_brands.id"/>
+    <hr>
+    <c-article :id="home.data.partnership.id"/>
     <hr>
     <c-article :id="home.data.contact.id"/>
     <hr>
@@ -15,11 +17,12 @@
 import { Component, Vue, Inject } from 'vue-property-decorator'
 import * as api from '@/api'
 import { State } from 'vuex-class'
-import Article from './Article.vue'
+import Article from '@/components/Article.vue'
 import AboutUs from './AboutUs.vue'
 import Services from './Services.vue'
 import Contact from './Contact.vue'
 import Partnership from './Partnership.vue'
+import OurBrands from './OurBrands.vue'
 
 @Component({
   components: {
@@ -27,7 +30,8 @@ import Partnership from './Partnership.vue'
     AboutUs,
     Services,
     Contact,
-    Partnership
+    Partnership,
+    OurBrands
   }
 })
 export default class Home extends Vue {

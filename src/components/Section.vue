@@ -15,7 +15,6 @@ export default class Section extends Vue {
   @Watch('data', { immediate: true })
   onData (val) {
     if (!val) return
-    console.log(val)
     this.html = PrismicDOM.RichText.asHtml(val)
   }
 }

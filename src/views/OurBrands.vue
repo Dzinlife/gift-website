@@ -26,19 +26,19 @@ import Section from '@/components/Section.vue'
     CSection: Section
   }
 })
-export default class Partnership extends Vue {
+export default class OurBrands extends Vue {
   @State home
   data = null as any
 
   @Watch('home', { immediate: true })
   async onLoad (home) {
     if (!home) return
-    this.data = await getById(this.partnership.id)
+    this.data = await getById(this.ourBrands.id)
   }
 
-  get partnership () {
+  get ourBrands () {
     if (!this.home) return
-    return this.home.data.partnership
+    return this.home.data.our_brands
   }
 }
 </script>
