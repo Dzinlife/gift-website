@@ -18,20 +18,10 @@ import { Component, Vue, Inject } from 'vue-property-decorator'
 import * as api from '@/api'
 import { State } from 'vuex-class'
 import Article from '@/components/Article.vue'
-import AboutUs from './AboutUs.vue'
-import Services from './Services.vue'
-import Contact from './Contact.vue'
-import Partnership from './Partnership.vue'
-import OurBrands from './OurBrands.vue'
 
 @Component({
   components: {
-    CArticle: Article,
-    AboutUs,
-    Services,
-    Contact,
-    Partnership,
-    OurBrands
+    CArticle: Article
   }
 })
 export default class Home extends Vue {

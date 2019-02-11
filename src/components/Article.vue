@@ -31,12 +31,22 @@ import Subtitle from '@/components/Subtitle.vue'
 })
 export default class Article extends Vue {
   @State home
-  @Prop() id!: string
+  @Prop() id?: string
+  @Prop() fetchedData?: any
   data = null as any
 
   @Watch('id', { immediate: true })
-  async onLoad (val) {
+  async onId (val) {
     this.data = await getById(val)
+  }
+
+  @Watch('fetchedData', { immediate: true })
+  async onData (val) {
+    if (val) {
+      this.data = JSON.parse(JSON.stringify(val))
+    } else {
+      this.data = null
+    }
   }
 
   componentNameByKey (key: string) {

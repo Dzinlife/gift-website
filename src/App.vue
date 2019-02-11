@@ -60,6 +60,11 @@ ul
   top 0
   left 32px
   right 32px
+.fade-enter-active, .fade-leave-active
+  transition: opacity .2s
+
+.fade-enter, .fade-leave-to
+  opacity: 0
 </style>
 
 <script lang="ts">

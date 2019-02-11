@@ -1,14 +1,30 @@
 <template>
   <header>
-    <img src="~@/assets/logo.svg"/>
+    <router-link to="/">
+      <img src="~@/assets/logo.svg"/>
+    </router-link>
     <div class="menu-button" @click="showMenu = !showMenu"/>
     <transition name="fade">
       <div class="menu" v-if="showMenu">
-        <ul>
-          <li><h1>OUR BRANDS</h1></li>
-          <li><h1>PROJECTS</h1></li>
-          <li><h1>OUR BRANDS</h1></li>
-          <li><h1>CONTACT</h1></li>
+        <ul v-if="data" @click="showMenu = false">
+          <router-link :to="{name:'aboutus'}">
+            <li><h1>{{data.data.about_us_label}}</h1></li>
+          </router-link>
+          <router-link :to="{name:'services'}">
+            <li><h1>{{data.data.services_label}}</h1></li>
+          </router-link>
+          <!-- <router-link :to="{name:'projects'}">
+            <li><h1>{{data.data.projects_label}}</h1></li>
+          </router-link> -->
+          <router-link :to="{name:'ourbrands'}">
+            <li><h1>{{data.data.our_brands_label}}</h1></li>
+          </router-link>
+          <router-link :to="{name:'partnership'}">
+            <li><h1>{{data.data.partnership_label}}</h1></li>
+          </router-link>
+          <router-link :to="{name:'contact'}">
+            <li><h1>{{data.data.contact_label}}</h1></li>
+          </router-link>
         </ul>
       </div>
     </transition>
@@ -49,6 +65,9 @@ header
     padding 0
     list-style none
     margin 0
+    a
+      color black
+      text-decoration none
     li
       height 76px
       box-sizing border-box
@@ -61,10 +80,21 @@ header
 </style>
 
 <script lang="ts">
-import { Component, Vue, Prop } from 'vue-property-decorator'
+import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
+import * as api from '@/api'
 
 @Component
 export default class Header extends Vue {
   showMenu = false
+  data = null as any
+
+  async created () {
+    this.data = await api.getSingle('menu')
+  }
+
+  @Watch('$route')
+  onRouteChange () {
+    this.showMenu = false
+  }
 }
 </script>

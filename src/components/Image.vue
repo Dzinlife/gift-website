@@ -11,7 +11,7 @@ img
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
 @Component
-export default class Image extends Vue {
+export default class CImage extends Vue {
   @Prop() data
 }
 </script>

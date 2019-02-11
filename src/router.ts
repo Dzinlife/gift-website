@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 import Preview from './views/Preview.vue'
+import UniqueArticle from './views/UniqueArticle.vue'
 
 Vue.use(Router)
 
@@ -20,9 +21,34 @@ export default new Router({
       component: Preview
     },
     {
-      path: '/article/:id',
-      name: 'article',
-      component: Home
+      path: '/aboutus',
+      name: 'aboutus',
+      component: UniqueArticle
+    },
+    {
+      path: '/services',
+      name: 'services',
+      component: UniqueArticle
+    },
+    {
+      path: '/projects/:uid',
+      name: 'projects',
+      component: UniqueArticle
+    },
+    {
+      path: '/ourbrands/:uid',
+      name: 'ourbrands',
+      component: UniqueArticle
+    },
+    {
+      path: '/partnership',
+      name: 'partnership',
+      component: UniqueArticle
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: UniqueArticle
     }
   ]
 })

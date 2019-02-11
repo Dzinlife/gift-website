@@ -45,7 +45,7 @@ export async function getSingle (type: string, opt: QueryOptions | null = null) 
   return api.getSingle(type, opt!)
 }
 
-export async function getById (type: string, opt: QueryOptions | null = null) {
+export async function getById (id: string, opt: QueryOptions | null = null) {
   const api = await getApi()
 
   if (opt) {
@@ -53,7 +53,18 @@ export async function getById (type: string, opt: QueryOptions | null = null) {
   } else {
     opt = globalOpt
   }
-  return api.getByID(type, opt!)
+  return api.getByID(id, opt!)
+}
+
+export async function getByUID (type: string, id: string, opt: QueryOptions | null = null) {
+  const api = await getApi()
+
+  if (opt) {
+    opt.ref = globalOpt!.ref
+  } else {
+    opt = globalOpt
+  }
+  return api.getByUID(type, id, opt!)
 }
 
 export async function getByIds (ids: string[], opt: QueryOptions | null = null) {
