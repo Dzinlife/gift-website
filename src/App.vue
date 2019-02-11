@@ -55,11 +55,7 @@ ul
 <style lang="stylus">
 #app
   padding-top 100px
-.header
-  position fixed
-  top 0
-  left 32px
-  right 32px
+
 .fade-enter-active, .fade-leave-active
   transition: opacity .2s
 

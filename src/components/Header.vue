@@ -34,11 +34,25 @@
 <style lang="stylus" scoped>
 header
   height 100px
-  border-bottom 4px solid black
+  // border-bottom 4px solid black
   background white
   display flex
   align-items center
   z-index 100
+  position fixed
+  top 0
+  left 0
+  right 0
+  padding 0 32px
+  &:after
+    content ''
+    position absolute
+    left 32px
+    right 32px
+    height 4px
+    background black
+    display block
+    bottom 0
   img
     width 116px
     margin-top 8px
