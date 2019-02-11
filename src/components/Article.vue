@@ -3,6 +3,9 @@
     <template v-for="(n, key) in data.data">
       <component :is="componentNameByKey(key)" :key="key" :data="n"/>
     </template>
+    <a v-if="data.data.more" :href="data.data.more.url">
+      <div class="more-button"><h4>{{data.data['more-text']}}</h4></div>
+    </a>
   </div>
 </template>
 
@@ -74,5 +77,17 @@ export default class Article extends Vue {
 </script>
 
 <style scoped lang="stylus">
+a
+  text-decoration none
 
+.more-button
+  height 60px
+  background #00ff72
+  color black
+  display flex
+  align-items center
+  justify-content center
+  margin-top 30px
+  h4
+    margin 0
 </style>

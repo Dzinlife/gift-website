@@ -36,8 +36,13 @@ export default new Router({
       component: UniqueArticle
     },
     {
-      path: '/ourbrands/:uid',
+      path: '/ourbrands',
       name: 'ourbrands',
+      component: UniqueArticle
+    },
+    {
+      path: '/ourbrands/:uid',
+      name: 'brand',
       component: UniqueArticle
     },
     {
