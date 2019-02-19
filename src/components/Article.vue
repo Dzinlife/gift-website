@@ -20,6 +20,7 @@ import Image from '@/components/Image.vue'
 import List from '@/components/List.vue'
 import CompactList from '@/components/CompactList.vue'
 import Subtitle from '@/components/Subtitle.vue'
+import Gallery from '@/components/Gallery.vue'
 
 @Component({
   components: {
@@ -29,7 +30,8 @@ import Subtitle from '@/components/Subtitle.vue'
     CImage: Image,
     List,
     CompactList,
-    Subtitle
+    Subtitle,
+    Gallery
   }
 })
 export default class Article extends Vue {
@@ -69,6 +71,8 @@ export default class Article extends Vue {
         return 'list'
       case 'subtitle':
         return 'subtitle'
+      case 'gallery':
+        return 'gallery'
       default:
         return null
     }

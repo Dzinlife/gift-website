@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <website-header class="header"/>
-    <router-view/>
+    <router-view class="view"/>
+    <website-footer/>
   </div>
 </template>
 
@@ -11,11 +12,9 @@ html
   -webkit-font-smoothing antialiased
 
 body
-  padding 0 32px
   font-size 11px
   line-height 1.7
-  max-width 800px
-  margin 0 auto
+  margin 0
 
 h1
   font-size 20px
@@ -56,6 +55,13 @@ ul
 #app
   padding-top 100px
 
+.view
+  padding 0 32px
+  max-width 800px
+  box-sizing border-box
+  margin 0 auto
+  padding-bottom 30px
+
 .fade-enter-active, .fade-leave-active
   transition: opacity .2s
 
@@ -66,10 +72,12 @@ ul
 <script lang="ts">
 import { Component, Prop, Vue, Provide } from 'vue-property-decorator'
 import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 @Component({
   components: {
-    WebsiteHeader: Header
+    WebsiteHeader: Header,
+    WebsiteFooter: Footer
   }
 })
 export default class App extends Vue {
