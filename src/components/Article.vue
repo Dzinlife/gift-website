@@ -3,7 +3,7 @@
     <template v-for="(n, key) in data.data">
       <component :is="componentNameByKey(key)" :key="key" :data="n"/>
     </template>
-    <a v-if="data.data.more" :href="data.data.more.url">
+    <a v-if="data.data.more && data.data.more.url" :href="data.data.more.url">
       <div class="more-button"><h4>{{data.data['more-text']}}</h4></div>
     </a>
   </div>

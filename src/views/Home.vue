@@ -6,6 +6,8 @@
     <hr>
     <c-article :id="home.data.our_brands.id"/>
     <hr>
+    <c-article :id="home.data.projects.id"/>
+    <hr>
     <c-article :id="home.data.partnership.id"/>
     <hr>
     <c-article :id="home.data.contact.id"/>
@@ -26,18 +28,6 @@ import Article from '@/components/Article.vue'
 })
 export default class Home extends Vue {
   @State home
-
-  get aboutUs () {
-    return this.home.data.about_us
-  }
-
-  get services () {
-    return this.home.data.services
-  }
-
-  get brands () {
-    return this.home.data.brands
-  }
 }
 </script>
 
