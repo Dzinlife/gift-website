@@ -12,7 +12,7 @@ export async function getSingle (type: string, opts?: QueryOptions) {
   return _getSingle(type, opts)
 }
 
-export async function getByUID (type: string, id: string,  opts?: QueryOptions) {
+export async function getByUID (type: string, id: string, opts?: QueryOptions) {
   return _getByUID(type, id, opts)
 }
 

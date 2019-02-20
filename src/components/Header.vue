@@ -1,28 +1,33 @@
 <template>
   <header>
-    <router-link to="/">
+    <router-link :to="{name: 'home', params: {lang}}">
       <img src="~@/assets/logo.svg"/>
     </router-link>
+    <div class="langs">
+      <router-link :to="routeByLanguage('en-us')">En</router-link>
+      <router-link :to="routeByLanguage('zh-cn')">中</router-link>
+      <router-link :to="routeByLanguage('ja-jp')">日</router-link>
+    </div>
     <div class="menu-button" @click="showMenu = !showMenu"/>
     <transition name="fade">
       <div class="menu" v-if="showMenu">
         <ul v-if="data" @click="showMenu = false">
-          <router-link :to="{name:'aboutus'}">
+          <router-link :to="`/${lang}/aboutus`">
             <li><h1>{{data.data.about_us_label}}</h1></li>
           </router-link>
-          <router-link :to="{name:'services'}">
+          <router-link :to="{name:'services', params: {lang}}">
             <li><h1>{{data.data.services_label}}</h1></li>
           </router-link>
           <!-- <router-link :to="{name:'projects'}">
             <li><h1>{{data.data.projects_label}}</h1></li>
           </router-link> -->
-          <router-link :to="{name:'ourbrands'}">
+          <router-link :to="{name:'ourbrands', params: {lang}}">
             <li><h1>{{data.data.our_brands_label}}</h1></li>
           </router-link>
-          <router-link :to="{name:'partnership'}">
+          <router-link :to="{name:'partnership', params: {lang}}">
             <li><h1>{{data.data.partnership_label}}</h1></li>
           </router-link>
-          <router-link :to="{name:'contact'}">
+          <router-link :to="{name:'contact', params: {lang}}">
             <li><h1>{{data.data.contact_label}}</h1></li>
           </router-link>
         </ul>
@@ -32,6 +37,14 @@
 </template>
 
 <style lang="stylus" scoped>
+.langs
+  margin-left auto
+  a
+    margin 0 3px
+    font-size 20px
+    text-decoration none
+    color black
+    font-weight bold
 header
   height 100px
   // border-bottom 4px solid black
@@ -62,7 +75,8 @@ header
   background url('~@/assets/menu.svg')
   background-size auto 30px
   background-position center right
-  margin-left auto
+  // margin-left auto
+  margin-left 2px
   background-repeat no-repeat
 
 .menu
@@ -101,14 +115,25 @@ import * as api from '@/api'
 export default class Header extends Vue {
   showMenu = false
   data = null as any
+  lang = null as string | null
 
   async created () {
-    this.data = await api.getSingle('menu')
+    this.lang = this.$route.params.lang
+    this.data = await api.getSingle('menu', {
+      lang: this.lang
+    })
   }
 
   @Watch('$route')
   onRouteChange () {
     this.showMenu = false
+  }
+
+  routeByLanguage (lang: string) {
+    const { name, params } = this.$route
+    const route = JSON.parse(JSON.stringify({ name, params }))
+    route.params.lang = lang
+    return route
   }
 }
 </script>

@@ -7,8 +7,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue, Prop, Watch } from 'vue-property-decorator'
-import * as api from '@/api'
+import { Component, Vue, Prop } from 'vue-property-decorator'
 import Article from './Article.vue'
 
 @Component
@@ -26,4 +25,5 @@ export default class ArticleList extends Vue {
   & + .article-wrapper
     border-top 1px solid black
     padding-top 32px
+    margin-top 32px
 </style>

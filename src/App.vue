@@ -2,7 +2,7 @@
   <div id="app">
     <website-header class="header"/>
     <router-view class="view"/>
-    <website-footer/>
+    <website-footer class="footer"/>
   </div>
 </template>
 
@@ -10,12 +10,13 @@
 html
   font-family 'Avenir Next', Helvetica, Arial, sans-serif
   -webkit-font-smoothing antialiased
+  height 100%
 
 body
   font-size 11px
   line-height 1.7
   margin 0
-
+  height 100%
 h1
   font-size 20px
   letter-spacing 0.05em
@@ -54,8 +55,16 @@ ul
 <style lang="stylus">
 #app
   padding-top 100px
+  min-height 100%
+  box-sizing border-box
+  display flex
+  flex-direction column
+
+.footer
+  margin-top auto
 
 .view
+  width 100%
   padding 0 32px
   max-width 800px
   box-sizing border-box

@@ -85,7 +85,8 @@ export default class Preview extends Vue {
   }
 
   async load () {
-    this.article = await api.getByUID('project', this.$route.params.uid)
+    const lang = this.$route.params.lang
+    this.article = await api.getByUID('project', this.$route.params.uid, { lang })
 
     const { id } = this.article
 
@@ -94,7 +95,8 @@ export default class Preview extends Vue {
       {
         orderings: '[document.last_publication_date]',
         pageSize: 1,
-        after: id
+        after: id,
+        lang
       })
       .then(res => {
         if (res.results.length) {
@@ -107,7 +109,8 @@ export default class Preview extends Vue {
       {
         orderings: '[document.last_publication_date desc]',
         pageSize: 1,
-        after: id
+        after: id,
+        lang
       })
       .then(res => {
         if (res.results.length) {

@@ -16,6 +16,6 @@
 
 <script>
 export default {
-  name: 'footer'
+  name: 'website-footer'
 }
 </script>

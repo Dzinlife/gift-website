@@ -1,17 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store'
-import { getSingle } from '@/api'
+// import store from './store'
 
 Vue.config.productionTip = false
 
-getSingle('ho').then(res => {
-  store.commit('setHome', res)
-})
-
 new Vue({
   router,
-  store,
+  // store,
   render: h => h(App)
 }).$mount('#app')

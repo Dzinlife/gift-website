@@ -18,7 +18,6 @@
 <script lang="ts">
 import { Component, Vue, Inject } from 'vue-property-decorator'
 import * as api from '@/api'
-import { State } from 'vuex-class'
 import Article from '@/components/Article.vue'
 
 @Component({
@@ -27,7 +26,13 @@ import Article from '@/components/Article.vue'
   }
 })
 export default class Home extends Vue {
-  @State home
+  home = null as any
+
+  created () {
+    api.getSingle('ho', { lang: this.$route.params.lang }).then(res => {
+      this.home = res
+    })
+  }
 }
 </script>
 
