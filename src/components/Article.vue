@@ -3,7 +3,7 @@
     <template v-for="(n, key) in data.data">
       <component :is="componentNameByKey(key)" :key="key" :data="n"/>
     </template>
-    <a v-if="data.data.more && data.data.more.url" :href="data.data.more.url">
+    <a v-if="data.data.more && data.data.more.url" :target="data.data.more.target" :href="data.data.more.url">
       <div class="more-button"><h4>{{data.data['more-text']}}</h4></div>
     </a>
   </div>
@@ -11,7 +11,6 @@
 
 <script lang="ts">
 import { Component, Prop, Vue, Watch } from 'vue-property-decorator'
-import { State } from 'vuex-class'
 import { getById } from '@/api/req'
 import Content from '@/components/Content.vue'
 import Section from '@/components/Section.vue'
@@ -35,7 +34,6 @@ import Gallery from '@/components/Gallery.vue'
   }
 })
 export default class Article extends Vue {
-  @State home
   @Prop() id?: string
   @Prop() fetchedData?: any
   data = null as any

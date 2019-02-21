@@ -1,5 +1,5 @@
 <template>
-  <div v-if="data">
+  <div v-if="data && data.map(n => n.image.url).filter(n => !!n).length">
     <light-box-control :imgs="data.map(n => n.image.url)"/>
   </div>
 </template>

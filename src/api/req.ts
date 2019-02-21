@@ -23,8 +23,10 @@ export default async function getApi () {
   return api
 }
 
+const _api = getApi()
+
 export async function getByQuery (query: string | string[], opt: QueryOptions | null = null) {
-  const api = await getApi()
+  const api = await _api
 
   if (opt) {
     opt.ref = globalOpt!.ref
@@ -35,7 +37,7 @@ export async function getByQuery (query: string | string[], opt: QueryOptions | 
 }
 
 export async function getSingle (type: string, opt: QueryOptions | null = null) {
-  const api = await getApi()
+  const api = await _api
 
   if (opt) {
     opt.ref = globalOpt!.ref
@@ -46,7 +48,7 @@ export async function getSingle (type: string, opt: QueryOptions | null = null) 
 }
 
 export async function getById (id: string, opt: QueryOptions | null = null) {
-  const api = await getApi()
+  const api = await _api
 
   if (opt) {
     opt.ref = globalOpt!.ref
@@ -57,7 +59,7 @@ export async function getById (id: string, opt: QueryOptions | null = null) {
 }
 
 export async function getByUID (type: string, id: string, opt: QueryOptions | null = null) {
-  const api = await getApi()
+  const api = await _api
 
   if (opt) {
     opt.ref = globalOpt!.ref
@@ -68,7 +70,7 @@ export async function getByUID (type: string, id: string, opt: QueryOptions | nu
 }
 
 export async function getByIds (ids: string[], opt: QueryOptions | null = null) {
-  const api = await getApi()
+  const api = await _api
 
   if (opt) {
     opt.ref = globalOpt!.ref
