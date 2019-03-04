@@ -79,6 +79,8 @@ export default class Article extends Vue {
 </script>
 
 <style scoped lang="stylus">
+.article
+  margin-top 20px
 a
   text-decoration none
 
@@ -90,6 +92,8 @@ a
   align-items center
   justify-content center
   margin-top 30px
+  &:active
+    background darken(#00ff72, 10%)
   h4
     margin 0
 </style>

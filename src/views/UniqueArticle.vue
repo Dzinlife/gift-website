@@ -29,7 +29,7 @@ export default class UniqueArticle extends Vue {
         this.data = await getSingle('about_us', { lang })
         break
       case 'brand':
-        this.data = await getByUID('brand', this.$route.params.uid, { lang })
+        this.data = await getByUID('article', this.$route.params.uid, { lang })
         break
       case 'contact':
         this.data = await getSingle('contact', { lang })
